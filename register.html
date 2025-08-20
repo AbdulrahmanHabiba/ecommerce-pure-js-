@@ -17,7 +17,7 @@
 
     <!-- ----------------------------------------------------------------------------------------------- -->
 
-    <header class="bg-primary" style="height: 70px;">
+    <header class="navbar-surface" style="height: 70px;">
         <div class="container">
             <div class="header-content d-flex justify-content-between">
 
@@ -37,16 +37,14 @@
     <!-- ----------------------------------------------------------------------------------------------- -->
 
 
-    <section class="section-form bg-primary">
-        <h2>Register User</h2>
-
-        <form>
-            <input type="text" placeholder="Enter User Name" id="userName">
-            <input type="email" placeholder="Enter User Email" id="email">
-            <input type="password" placeholder="Enter User password" id="password">
-            <input type="submit" value="Sign up" id="signUP">
-
-            Have Already Account? <a href="login.html" class="text-light">Login</a>
+    <section class="section-form">
+        <h2>Create Account</h2>
+        <form class="p-4 bg-white rounded" style="border-radius: 12px !important;">
+            <input type="text" placeholder="Full Name" id="userName">
+            <input type="email" placeholder="Email" id="email">
+            <input type="password" placeholder="Password" id="password">
+            <input type="submit" value="Sign up" id="signUP" class="btn btn-primary mt-2">
+            <div class="mt-2">Already have an account? <a href="login.html">Login</a></div>
         </form>
     </section>
 

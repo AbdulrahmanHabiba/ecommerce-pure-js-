@@ -5,16 +5,16 @@ let totalPrice = document.querySelector(".total .totalPrice")
 
 
 if (proudectInCart) {
-  drawProudectCart(JSON.parse(proudectInCart));
+  renderCartPage(JSON.parse(proudectInCart));
 }
 
-function drawProudectCart(products) {
+function renderCartPage(products) {
 
   let y = products.map((item) => {
     let quantity = +(localStorage.getItem(`quantity-${item.id}`)) || 1;
 
     return `
-        <div id="product-${item.id}" class="product-item col-6 mb-4">
+        <div id="product-${item.id}" class="product-item col-12 col-md-6 mb-4">
         <div class="card border border-info">
           <div class="row">
             <div class="col-md-4">
@@ -30,8 +30,8 @@ function drawProudectCart(products) {
 
               <div class="product-item-action d-flex justify-content-between align-items-center pr-4 pl-3">
                 <button id="remove-btn-${item.id}" class="RemoveFromCartBtn btn btn-primary mb-2 d-inline-block" onClick="removeFromCart(${item.id})">Remove From Cart</button>
-                <span class="text-danger mins p-0 m-0" style="font-size : 30px;  cursor: pointer; " onClick="mins(${item.id},${item.salePrice})">-</span>
-                <span class="text-success pls p-0 m-0" style="font-size : 30px;  cursor: pointer; " onClick="pls(${item.id},${item.salePrice})">+</span>
+                <span class="text-danger mins p-0 m-0" style="font-size : 30px;  cursor: pointer; " onClick="decrementQuantity(${item.id},${item.salePrice})">-</span>
+                <span class="text-success pls p-0 m-0" style="font-size : 30px;  cursor: pointer; " onClick="incrementQuantity(${item.id},${item.salePrice})">+</span>
                 <div class="text-primary" style="font-size : 25px" id="quantity-${item.id}">${quantity}</div>
 
               </div>
@@ -47,6 +47,7 @@ function drawProudectCart(products) {
 // ---------------------------------------------------------------------------------------------
 
 let addItemStorage = localStorage.getItem("proudectInCart") ? JSON.parse(localStorage.getItem("proudectInCart")) : [];
+const cartBadge = document.querySelector('.badge');
 let quantity = 1;
 let total = localStorage.getItem("totalPrice") ? +(localStorage.getItem("totalPrice")) : 0;
 
@@ -54,7 +55,11 @@ if (addItemStorage) {
   addItemStorage.map((item) => {
     total += +item.salePrice * +(localStorage.getItem(`quantity-${item.id}`));
   })
-  totalPrice.innerHTML = total / 2;
+  totalPrice.innerHTML = total + " EGP";
+  if (cartBadge) {
+    cartBadge.style.display = addItemStorage.length ? 'block' : 'none';
+    cartBadge.innerHTML = addItemStorage.length;
+  }
 
 }
 
@@ -84,7 +89,7 @@ function removeFromCart(id) {
 // -----------------------------------------------
 
 // ----------------------------------------------------
-function pls(id, salePrice) {
+function incrementQuantity(id, salePrice) {
   // console.log(item);
 
   let quantityElement = document.getElementById(`quantity-${id}`);
@@ -96,8 +101,12 @@ function pls(id, salePrice) {
   total += (+salePrice);
   totalPrice.innerHTML = total;
   localStorage.setItem("totalPrice", JSON.stringify(total));
+  if (cartBadge) {
+    cartBadge.style.display = addItemStorage.length ? 'block' : 'none';
+    cartBadge.innerHTML = addItemStorage.length;
+  }
 }
-function mins(id, salePrice) {
+function decrementQuantity(id, salePrice) {
   // console.log(item);
   let quantityElement = document.getElementById(`quantity-${id}`);
   let quantity = +(quantityElement.innerHTML);

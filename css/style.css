@@ -18,13 +18,95 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important
 }
 
+/* Modern, minimal look and feel */
+:root {
+    --primary: #10B981; /* Teal 500 */
+    --primary-600: #0EA5A6; /* Teal 600 (slightly deeper) */
+    --primary-muted: #A7F3D0; /* Teal 200 */
+    --surface: #ffffff;
+    --surface-2: #f9fafb;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --radius: 12px;
+}
+
+body {
+    background: var(--surface-2);
+    color: var(--text);
+}
+
+.bg-primary { background: linear-gradient(135deg, var(--primary-600), var(--primary)) !important; }
+.text-primary { color: var(--primary) !important; }
+
+.product-item .card {
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+
+.product-item-img {
+    object-fit: contain;
+}
+
+/* Responsive tweaks */
+@media (max-width: 767.98px) {
+    .Home { padding: 0 1rem; }
+    .product-item { padding: 0 0.75rem !important; }
+    .product-item .card { padding-top: 0.5rem; }
+    .product-item-img { width: 90% !important; height: 220px !important; }
+    nav ul { flex-wrap: wrap; }
+    header { height: auto !important; }
+}
+@media (max-width: 575.98px) {
+    .product-item-img { height: 200px !important; }
+    .cartsProudect { width: calc(100vw - 24px); transform: translate(-85vw, 0); }
+    .section-form form { margin: 0 12px; }
+    .h3, h3 { font-size: 1rem; }
+
+}
+
+.product-itm-desc .card-title {
+    font-weight: 700;
+}
+.product-itm-desc .card-text,
+.product-itm-desc .color,
+.product-itm-desc .card-price {
+    color: var(--muted);
+}
+
+.AddToCartBtn,
+.RemoveFromCartBtn {
+    border-radius: 999px;
+    padding: 6px 14px;
+}
+
+.pagination .page-link {
+    border-radius: 999px;
+}
+
 header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 200;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
-
+header img {
+    width: 70px;
+    height: 50px;
+    overflow: hidden;
+}
+/* Modern light navbar */
+.navbar-surface {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: none;
+}
+.navbar-surface img {
+    margin-top: -25px;
+    zoom: 120%;
+}
 main {
     margin-top: 70px;
 }
@@ -40,6 +122,23 @@ nav li a {
     min-width: 80px;
     padding: 3px;
     margin: 0px 4px;
+}
+
+header.bg-primary nav a {
+    color: #fff !important;
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+header.bg-primary nav a:hover {
+    background: rgba(255,255,255,0.12);
+}
+header.navbar-surface nav a {
+    color: var(--text) !important;
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+header.navbar-surface nav a:hover {
+    background: rgba(17,24,39,0.06);
 }
 
 /* ------------------------------------------------------------------------- */
@@ -110,8 +209,8 @@ nav ul#userInfo li .badge {
     position: absolute;
     width: 20px;
     height: 20px;
-    background-color: #fff;
-    color: #007bff;
+    background-color: var(--primary);
+    color: #fff;
     text-align: center;
     /* display: block; */
     border-radius: 50%;
@@ -136,22 +235,19 @@ nav #links li a,#logOut{
     position: relative;
 }
 
-.fas {
-    color: #007bff;
-}
-
-.far {
-    color: #5bc0de;
-}
+.fas { color: var(--primary); }
+.far { color: var(--primary-600); }
 
 .cartsProudect {
     position: absolute; 
-    width: 300px;
+    width: 320px;
     transform: translate(-105px, 0);
     top: 51px;
-    border: 1px solid #007bff;
+    border: 1px solid var(--border);
     display: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
 }
+.cartsProudect.bg-primary { background: var(--surface) !important; }
 
 .buyProudect {
     display: flex;
@@ -175,7 +271,7 @@ nav #links li a,#logOut{
 .buyProudect div {
     background-color: #fff;
     padding: .5rem 0rem;
-    color: #007bff;
+    color: var(--primary);
     border-radius: 5px;
 }
 
@@ -184,20 +280,58 @@ nav #links li a,#logOut{
     cursor: pointer;
 }
 .product-item {
-    transition: 0.5s;
+    transition: transform .25s ease, box-shadow .25s ease;
 }
 .product-item:hover {
-    /* transform: translate(10%, 10%); */
-    transform: scale(1.1);
-    /* transition: .5s; */
+    transform: translateY(-6px);
 }
 
+.card {
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
 .card .product-item-action .RemoveFromCartBtn {
     display: none;
 }
 
 .card .product-item-action .AddToCartBtn {
     display: inline-block;
+}
+
+.card .product-itm-desc p {
+    margin-bottom: .4rem;
+}
+
+/* Primary buttons */
+.btn.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn.btn-primary:hover {
+    filter: brightness(0.95);
+}
+
+/* Inputs modern style */
+.section-form form {
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.section-form form input[type="text"],
+.section-form form input[type="email"],
+.section-form form input[type="password"] {
+    height: 44px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    font-family: inherit;
+}
+.section-form form input[type="text"]:focus,
+.section-form form input[type="email"]:focus,
+.section-form form input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(16,185,129,0.15);
 }
 
 .fav{
@@ -208,7 +342,7 @@ margin: 3rem 0rem 5rem 0rem;
     width: 100px;
     margin: auto;
     height: 2px;
-    background-color: #007bff;
+    background-color: var(--primary);
 }
 .fav-Header:hover .line{
     transform: scale(1.5);
@@ -233,8 +367,12 @@ margin: 3rem 0rem 5rem 0rem;
   opacity: 0;
   pointer-events: none;
   animation: toast-in 0.3s forwards, toast-out 0.5s 2s forwards;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
+
+/* Pagination modern look */
+.pagination .page-link { border: 1px solid var(--border); color: var(--text); }
+.pagination .page-item.active .page-link { background: var(--primary); border-color: var(--primary); color: #fff; }
 .custom-toast.success {
   background: #27ae60;
 }

@@ -13,7 +13,7 @@
 </head>
 
 <body >
-    <header class="bg-primary" style="height: 70px;">
+    <header class="navbar-surface" style="height: 70px;">
         <div class="container">
             <div class="header-content d-flex justify-content-between">
 
@@ -34,15 +34,13 @@
     <!-- ----------------------------------------------------------------------------------------------- -->
 
 
-    <section class="section-form bg-primary">
-        <h2 class="text-white">Login User</h2>
-
-        <form>
-            <input type="email" placeholder="Enter Your Email" id="email">
-            <input type="password" placeholder="Enter Your password" id="password">
-            <input type="submit" value="Sign In" id="signIn">
-
-            Sign up Now? <a href="register.html" class="text-light">Register</a>
+    <section class="section-form">
+        <h2>Login</h2>
+        <form class="p-4 bg-white rounded" style="border-radius: 12px !important;">
+            <input type="text" placeholder="Email or Username" id="email">
+            <input type="password" placeholder="Password" id="password">
+            <input type="submit" value="Sign In" id="signIn" class="btn btn-primary mt-2">
+            <div class="mt-2">New here? <a href="register.html">Create an account</a></div>
         </form>
     </section>
 
