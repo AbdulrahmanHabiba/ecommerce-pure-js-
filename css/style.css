@@ -57,13 +57,69 @@ body {
     .product-item-img { width: 90% !important; height: 220px !important; }
     nav ul { flex-wrap: wrap; }
     header { height: auto !important; }
+    
+    /* Typography responsive */
+    .card-title { font-size: 1.1rem !important; }
+    .card-text, .color, .card-price { font-size: 1rem !important; }
+    h2 { font-size: 1.75rem !important; }
+    h3 { font-size: 1.5rem !important; }
+    h5 { font-size: 1.25rem !important; }
+    
+    /* Form responsive */
+    .section-form form { margin: 0 12px; }
+    .section-form form input { font-size: 1rem !important; }
+    .section-form h2 { font-size: 2rem !important; }
+    
+    /* Button responsive */
+    .btn { font-size: 1rem !important; padding: 0.5rem 1rem !important; }
+    .AddToCartBtn, .RemoveFromCartBtn { font-size: 0.95rem !important; }
+    
+    /* Cart responsive */
+    .cartsProudect { width: calc(100vw - 24px); transform: translate(-85vw, 0); }
+    .buyProudect div { font-size: 1rem !important; }
+    .total h5 { font-size: 1.25rem !important; }
+    .totalPrice { font-size: 1.25rem !important; }
+    
+    /* Search responsive */
+    .searchDiv .form-control { font-size: 1rem !important; }
+    .searchDiv select { font-size: 1rem !important; }
 }
+
 @media (max-width: 575.98px) {
     .product-item-img { height: 200px !important; }
     .cartsProudect { width: calc(100vw - 24px); transform: translate(-85vw, 0); }
     .section-form form { margin: 0 12px; }
-    .h3, h3 { font-size: 1rem; }
-
+    
+    /* Extra small screens - larger components */
+    .card-title { font-size: 1.2rem !important; }
+    .card-text, .color, .card-price { font-size: 1.1rem !important; }
+    .btn { font-size: 1.1rem !important; padding: 0.6rem 1.2rem !important; }
+    .AddToCartBtn, .RemoveFromCartBtn { font-size: 1rem !important; }
+    
+    /* Header adjustments */
+    header { height: 70px !important; }
+    .navbar-surface .fas.fa-shopping-bag { font-size: 2rem !important; }
+    
+    /* Product grid adjustments */
+    .product-item { padding: 0 0.75rem !important; }
+    .product-item .card { padding: 1rem !important; }
+    .product-item-action { flex-direction: column; gap: 0.5rem; }
+    .product-item-action .btn { width: 100%; margin-bottom: 0.5rem !important; }
+    
+    /* Cart page adjustments */
+    .product-item-desc .card-title { font-size: 1.2rem !important; }
+    .product-item-desc .card-text { font-size: 1.1rem !important; }
+    .product-item-action .mins, .product-item-action .pls { font-size: 2rem !important; }
+    .product-item-action #quantity { font-size: 1.5rem !important; }
+    
+    /* Form improvements */
+    .section-form form { padding: 2rem !important; }
+    .section-form form input { height: 50px !important; font-size: 1.1rem !important; }
+    .section-form h2 { font-size: 2.25rem !important; }
+    
+    /* Search improvements */
+    .searchDiv .form-control { height: 45px !important; font-size: 1.1rem !important; }
+    .searchDiv select { height: 45px !important; font-size: 1.1rem !important; }
 }
 
 .product-itm-desc .card-title {
@@ -78,7 +134,9 @@ body {
 .AddToCartBtn,
 .RemoveFromCartBtn {
     border-radius: 999px;
-    padding: 6px 14px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .pagination .page-link {
@@ -92,10 +150,10 @@ header {
     z-index: 200;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
-header img {
-    width: 70px;
-    height: 50px;
-    overflow: hidden;
+/* Logo icon styling */
+.navbar-surface .fas.fa-shopping-bag {
+    color: var(--primary);
+    font-size: 2.5rem;
 }
 /* Modern light navbar */
 .navbar-surface {
@@ -154,7 +212,6 @@ header.navbar-surface nav a:hover {
     width: 50%;
     text-align: center;
     /* background-color: #0a9e02; */
-    padding: 30px;
 }
 
 .section-form h2 {
@@ -276,8 +333,9 @@ nav #links li a,#logOut{
 }
 
 .product-item-action i {
-    font-size: 30px;
+    font-size: 32px;
     cursor: pointer;
+    margin-top: 0.5rem;
 }
 .product-item {
     transition: transform .25s ease, box-shadow .25s ease;
@@ -317,14 +375,17 @@ nav #links li a,#logOut{
     max-width: 480px;
     margin: 0 auto;
     box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    padding: 2rem !important;
 }
 .section-form form input[type="text"],
 .section-form form input[type="email"],
 .section-form form input[type="password"] {
-    height: 44px;
+    height: 48px;
     border-radius: var(--radius);
     border: 1px solid var(--border);
     font-family: inherit;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
 }
 .section-form form input[type="text"]:focus,
 .section-form form input[type="email"]:focus,
@@ -332,6 +393,8 @@ nav #links li a,#logOut{
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 4px rgba(16,185,129,0.15);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
 }
 
 .fav{
